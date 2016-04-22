@@ -87,60 +87,66 @@ $data = json_decode($asignatura->getGruposPorDocente($datosUsuario['id']));
                     </div>
                 </div> 
             </div>
+        </div>
 
-            <div class="modal fade" id="modalNotas">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title">Calificar usuario <span></span></h4>
-                  </div>
-                  <div class="modal-body">
-                    <table id="tableNotas" class="table table-striped table-hover table-responsive">
-                        <thead>
-                            <tr>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr></tr>
-                        </tbody>
-                    </table>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" id="saveNotes">Guardar Notas</button>
-                  </div>
-                </div>
+        <div class="modal fade" id="modalNotas">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Calificar usuario <span></span></h4>
+              </div>
+              <div class="modal-body">
+                <table id="tableNotas" class="table table-striped table-hover table-responsive">
+                    <thead>
+                        <tr>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr></tr>
+                    </tbody>
+                </table>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="saveNotes">Guardar Notas</button>
               </div>
             </div>
-            
-            <script type="text/html" id="tableHead">
-                <th>
-                    Nota <%= n %>
-                </th>
-            </script>
-            <script type="text/html" id="tableBody">
+          </div>
+        </div>
+        
+        <!-- Templates -->
+        <script type="text/html" id="tableHead">
+            <th>
+                Nota <%= n %>
+            </th>
+        </script>
+        <script type="text/html" id="tableBody">
+            <td>
+                <input type="number" class="form-control" name="nota<%= n %>" id="nota<%= n %>" value="">
+            </td>
+        </script>
+        <script type="text/html" id="rowStudents">
+            <tr>
+                <td><%= id %></td>
+                <td><%= id_estudiante %></td>
+                <td><%= usu_nombre+ " " +usu_apellido1+ " " +usu_apellido2 %></td>
                 <td>
-                    <input type="number" class="form-control" name="nota<%= n %>" id="nota<%= n %>" value="">
+                    <button type="button" class="btn btn-info" id-estudiante="<%= id_estudiante %>" nombre-estudiante="<%= usu_nombre+ " " +usu_apellido1+ " " +usu_apellido2 %>">Calificar</button>
                 </td>
-            </script>
-            <script type="text/html" id="rowStudents">
-                <tr>
-                    <td><%= id %></td>
-                    <td><%= id_estudiante %></td>
-                    <td><%= usu_nombre+ " " +usu_apellido1+ " " +usu_apellido2 %></td>
-                    <td>
-                        <button type="button" class="btn btn-info" id-estudiante="<%= id_estudiante %>" nombre-estudiante="<%= usu_nombre+ " " +usu_apellido1+ " " +usu_apellido2 %>">Calificar</button>
-                    </td>
-                </tr>
-            </script>
-            <script src="../../plugins/jQuery/jQuery-2.1.3.min.js"></script>
-            <script src="../../plugins/loading/loading.js"></script>
-            <script src="../../js/bootstrap.js"></script>
-            <script src="../../js/general.js"></script>
-            <script src="js/agregarNotas.js"></script>
+            </tr>
+        </script>
+        <!-- Fin Templates -->
+
+        <!-- Scripts -->
+        <script src="../../plugins/jQuery/jQuery-2.1.3.min.js"></script>
+        <script src="../../plugins/loading/loading.js"></script>
+        <script src="../../plugins/notify/notify.js"></script>
+        <script src="../../js/bootstrap.js"></script>
+        <script src="../../js/general.js"></script>
+        <script src="js/agregarNotas.js"></script>
     </body>
 </html>
           

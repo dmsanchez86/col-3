@@ -6,6 +6,7 @@ $().ready(function($) {
 	$('#selectGrupo').unbind('change').change(function(){
 		if($(this).val() != ""){
       $('body').loading({
+        message: 'Cargando Estudiantes...',
         onStart: function(loading) {
           loading.overlay.slideDown(400);
         },
@@ -13,7 +14,6 @@ $().ready(function($) {
           loading.overlay.slideUp(400);
         }
       });
-
 
 			var $idGrupo = $(this).val();
 
@@ -48,7 +48,7 @@ $().ready(function($) {
               var nombreEstudiante = $(this).attr('nombre-estudiante');
 
               if($('#selectCantidad').val() == ""){
-                alert("Seleccione una cantidad");
+                $('#selectCantidad').notify("Seleccione una cantidad");
                 $('#selectCantidad').focus();
               }else{
                 var cantidad = $('#selectCantidad').val();
