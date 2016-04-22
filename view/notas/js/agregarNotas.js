@@ -140,6 +140,8 @@ $().ready(function($) {
             notas: notas
           };
 
+          $('#saveNotes').notify('Guardando', 'info');
+
           // guardamos las notas en la base de datos
           $.ajax({
             url: './index.php',
@@ -163,6 +165,7 @@ $().ready(function($) {
                 // ocultamos el modal
                 $('button[data-dismiss]').click();
                 $('#tableStudents').notify($data.message, "success"); // mostramos el mensaje de que se guardaron las notas
+                $('#selectCantidad').val("");
               }else{
                 $('#saveNotes').notify($data.message); // error guardando las notas
               }
