@@ -5,6 +5,16 @@ $().ready(function($) {
 	// evento del select que me carga los estudiantes de la asignatura
 	$('#selectGrupo').unbind('change').change(function(){
 		if($(this).val() != ""){
+      $('body').loading({
+        onStart: function(loading) {
+          loading.overlay.slideDown(400);
+        },
+        onStop: function(loading) {
+          loading.overlay.slideUp(400);
+        }
+      });
+
+
 			var $idGrupo = $(this).val();
 
 			$.ajax({
@@ -27,6 +37,8 @@ $().ready(function($) {
   						console.log(element);
   						$("#tableStudents tbody").append(App.tmpl("rowStudents", element));
   					});
+
+            $('body').loading('stop');
 
             $('#tableStudents').fadeIn();
 

@@ -52,7 +52,7 @@ $data = json_decode($asignatura->getGruposPorDocente($datosUsuario['id']));
                             <div class="col-md-4 col-xs-6">
                                 <label for="selectCantidad">Seleccione la cantidad de notas a calificar</label>
                             </div>
-                            <div class="col-md-1 col-xs-6">
+                            <div class="col-md-2 col-xs-6">
                                 <select name="grupo" id="selectCantidad" class="form-control">
                                     <option value="">-</option>
                                     <option value="1">1</option>
@@ -137,6 +137,7 @@ $data = json_decode($asignatura->getGruposPorDocente($datosUsuario['id']));
                 </tr>
             </script>
             <script src="../../plugins/jQuery/jQuery-2.1.3.min.js"></script>
+            <script src="../../plugins/loading/loading.js"></script>
             <script src="../../js/bootstrap.js"></script>
             <script src="../../js/general.js"></script>
             <script src="js/agregarNotas.js"></script>
