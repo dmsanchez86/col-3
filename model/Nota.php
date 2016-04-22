@@ -61,8 +61,8 @@ class Nota {
                         :ins_id,
                         :not_observaciones
                     );";
-		
-		return Ejecucion::insertar($sql,
+    
+    return Ejecucion::insertar($sql,
                         array(
                                 ':table'=>self::$tablename,
                                 ':not_fecha_reg'=>$this->not_fecha_reg,
@@ -73,6 +73,48 @@ class Nota {
                                 ':ins_id'=>$ins_id,
                                 ':not_observaciones'=>$this->not_observaciones
                              )); 
+  }
+
+  public function registrarNotasEstudiante($estudiante, $idDocente){
+    // var_dump($estudiante);
+    // var_dump($idDocente);
+
+    $notas = $estudiante['notas'];
+    $cantidadNotas = count($notas);
+    $idEstudiante = $estudiante['idEstudiante'];
+    $idGrupoEstudiante = $estudiante['idGrupoEstudiante'];
+    $fecha = date("Y-m-d");
+
+    $arrayResponse = array();
+
+    $n = 0;
+
+    foreach ($notas as $key) {
+      $nota = $key['value'];
+
+      $sql = "INSERT INTO notas VALUES(0,:idGrupoEstudiante,:idDocente,:idEstudiante, :nota,:fecha);";
+
+      $res = Ejecucion::insertar(
+        $sql,
+        array(
+          ':idGrupoEstudiante'=> $idGrupoEstudiante,
+          ':idDocente'=> $idDocente,
+          ':idEstudiante'=> $idEstudiante ,
+          ':nota'=> $nota,
+          ':fecha'=> $fecha,
+        )); 
+
+      $arrayResponse.array_push($res);
+      $n++;
+    }
+    
+    if($cantidadNotas == $n){
+      return json_encode(array('message' => "Se ingresaron todas las notas correctamente", 'status' => true));
+    }else{
+      return json_encode(array('message' => "Error registrando las notas", 'status' => false));
+    }
+		
+		
 	}
 
 	public  function modificar($id,$datos){

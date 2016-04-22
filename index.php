@@ -10,6 +10,7 @@ include_once './model/Calendario.php';
 include_once './model/Area.php';
 include_once './model/Asignatura.php';
 include_once './model/Grupo.php';
+include_once './model/Nota.php';
 
        $sistema = new Sistema($_POST);
        $sistema->procesarAccion();

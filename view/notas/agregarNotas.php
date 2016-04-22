@@ -119,13 +119,13 @@ $data = json_decode($asignatura->getGruposPorDocente($datosUsuario['id']));
         
         <!-- Templates -->
         <script type="text/html" id="tableHead">
-            <th>
+            <th style="font-size: 11px;">
                 Nota <%= n %>
             </th>
         </script>
         <script type="text/html" id="tableBody">
             <td>
-                <input type="number" class="form-control" name="nota<%= n %>" id="nota<%= n %>" value="">
+                <input type="number" class="form-control" name="nota<%= n %>" id="nota<%= n %>" min="0" max="10">
             </td>
         </script>
         <script type="text/html" id="rowStudents">
@@ -134,7 +134,7 @@ $data = json_decode($asignatura->getGruposPorDocente($datosUsuario['id']));
                 <td><%= id_estudiante %></td>
                 <td><%= usu_nombre+ " " +usu_apellido1+ " " +usu_apellido2 %></td>
                 <td>
-                    <button type="button" class="btn btn-info" id-estudiante="<%= id_estudiante %>" nombre-estudiante="<%= usu_nombre+ " " +usu_apellido1+ " " +usu_apellido2 %>">Calificar</button>
+                    <button type="button" class="btn btn-info" id-estudiante="<%= id_estudiante %>" id-grupoestudiante="<%= id %>" nombre-estudiante="<%= usu_nombre+ " " +usu_apellido1+ " " +usu_apellido2 %>">Calificar</button>
                 </td>
             </tr>
         </script>

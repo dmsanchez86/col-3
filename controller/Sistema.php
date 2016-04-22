@@ -148,6 +148,9 @@ class Sistema{
       case 'obtenerEstudiantesPorGrupo':
         echo $this->obtenerEstudiantesPorGrupo();
         break;
+      case 'guardarNotasEstudiante':
+        echo $this->guardarNotasEstudiante();
+        break;
       default :
         $this->verificarAccesoPagina();  
         break;
@@ -466,6 +469,14 @@ private function   uploadImage()
       $idGrupo = $_POST['idGrupo'];
       $res = $asignatura->obtenerEstudiantesPorGrupo($idGrupo, $_SESSION['datos_usuario']['id']);
       echo $res;
+    }
+    function guardarNotasEstudiante()
+    {
+      $nota = new Nota();
+      $estudiante = $_POST['estudiante'];
+      $res = $nota->registrarNotasEstudiante($estudiante, $_SESSION['datos_usuario']['id']);
+      echo $res;
+      // var_dump($_POST);
     }
 
     /////// Asignaturas /////
