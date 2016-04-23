@@ -19,7 +19,7 @@ class Nota {
     't_observaciones'=> 'not_observaciones'
   );
         
-  public function Nota($bd){
+  public function Nota(){
 		$this->not_id = "";
 		$this->not_fecha_reg = "NOW()";
 		$this->not_docente_id = "";
@@ -28,7 +28,7 @@ class Nota {
     $this->cal_id = "";
 		$this->ins_id = "";
     $this->not_observaciones = ""; 
-    $this->bd     = $bd;
+    // $this->bd     = $bd;
 	}
   
   public function getDatos(){
@@ -76,8 +76,6 @@ class Nota {
   }
 
   public function registrarNotasEstudiante($estudiante, $idDocente){
-    // var_dump($estudiante);
-    // var_dump($idDocente);
 
     $notas = $estudiante['notas'];
     $cantidadNotas = count($notas);
@@ -99,12 +97,12 @@ class Nota {
         array(
           ':idGrupoEstudiante'=> $idGrupoEstudiante,
           ':idDocente'=> $idDocente,
-          ':idEstudiante'=> $idEstudiante ,
+          ':idEstudiante'=> $idEstudiante,
           ':nota'=> $nota,
           ':fecha'=> $fecha,
         )); 
 
-      $arrayResponse.array_push($res);
+      array_push($arrayResponse, $res);
       $n++;
     }
     

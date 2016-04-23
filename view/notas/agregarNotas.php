@@ -1,4 +1,8 @@
 <?php 
+
+error_reporting(E_ALL);
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
+
 require '../../controller/Ejecucion.php';
 require '../../model/Asignatura.php';
 

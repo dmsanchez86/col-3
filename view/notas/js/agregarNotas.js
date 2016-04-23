@@ -15,12 +15,12 @@ $().ready(function($) {
       // mostramos el mensaje de cargando
       $('body').loading({
         message: 'Cargando Estudiantes...',
-        onStart: function(loading) {
-          loading.overlay.slideDown(400);
-        },
-        onStop: function(loading) {
-          loading.overlay.slideUp(400);
-        }
+        // onStart: function(loading) {
+        //   loading.overlay.slideDown(400);
+        // },
+        // onStop: function(loading) {
+        //   loading.overlay.slideUp(400);
+        // }
       });
 
       // obtenemos el id del grupo
@@ -151,23 +151,28 @@ $().ready(function($) {
               estudiante: estudiante,
             },
             success: function(data){
+              try{
+                var $data = JSON.parse(data);
 
-              var $data = JSON.parse(data);
+                // si todo es correcto
+                if($data.status){
+                  // añadimos el estudiante
+                  estudiantesCalificados.push(estudiante);
 
-              // si todo es correcto
-              if($data.status){
-                // añadimos el estudiante
-                estudiantesCalificados.push(estudiante);
+                  // guardamos el estudiante con las notas en el local storage para usarlos mas adelante o si recarga la pagina volver a tener los datos
+                  localStorage.setItem("configuracionEstudiantes", JSON.stringify(estudiantesCalificados));
 
-                // guardamos el estudiante con las notas en el local storage para usarlos mas adelante o si recarga la pagina volver a tener los datos
-                localStorage.setItem("configuracionEstudiantes", JSON.stringify(estudiantesCalificados));
+                  // ocultamos el modal
+                  $('button[data-dismiss]').click();
+                  $('#tableStudents').notify($data.message, "success"); // mostramos el mensaje de que se guardaron las notas
+                  $('#selectCantidad').val("");
+                }else{
+                  $('#saveNotes').notify($data.message); // error guardando las notas
+                }
+              }catch(e){
+                console.warn(e);
 
-                // ocultamos el modal
-                $('button[data-dismiss]').click();
-                $('#tableStudents').notify($data.message, "success"); // mostramos el mensaje de que se guardaron las notas
-                $('#selectCantidad').val("");
-              }else{
-                $('#saveNotes').notify($data.message); // error guardando las notas
+                $('#saveNotes').notify('Error guardando las notas!');
               }
 
             }
