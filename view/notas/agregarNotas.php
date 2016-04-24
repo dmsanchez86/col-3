@@ -30,64 +30,78 @@ $data = json_decode($asignatura->getGruposPorDocente($datosUsuario['id']));
 
         <style>
             #tableStudents{display: none;}
+            .title{
+                margin: 0;
+                font-weight: bold;
+            }
+            label{
+                font-weight: 100;
+            }
         </style>
     </head>
     <body>
-        <div class="wrapper">
+        <div class="wrapper" style="padding-top: 1rem;">
             <div class="content-wrapper">
                 <div class="container"> 
-                    <div class="well">
-                        <h3 class="title">Agregar Nota</h3>
-                        <div class="row">
-                            <div class="col-md-2 col-xs-6">
-                                <label for="selectGrupo">Seleccione el Grupo</label>
-                            </div>
-                            <div class="col-md-3 col-xs-6">
-                                <select name="grupo" id="selectGrupo" class="form-control">
-                                    <option value="">Seleccione</option>
-                                    <?php 
-                                        foreach ($data as $key) {
-                                            echo "<option value='".$key->gru_id."'>".$key->gru_nombre."</option>";
-                                        }
-                                    ?>
-                                </select>
-                            </div>
-                            <div class="col-md-1 col-xs-12"></div>
-                            <div class="col-md-4 col-xs-6">
-                                <label for="selectCantidad">Seleccione la cantidad de notas a calificar</label>
-                            </div>
-                            <div class="col-md-2 col-xs-6">
-                                <select name="grupo" id="selectCantidad" class="form-control">
-                                    <option value="">-</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                </select>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="title">Agregar Nota</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-3 col-xs-6">
+                                    <label for="selectGrupo">Seleccione el Grupo</label>
+                                </div>
+                                <div class="col-md-3 col-xs-6">
+                                    <select name="grupo" id="selectGrupo" class="form-control">
+                                        <option value="">Seleccione</option>
+                                        <?php 
+                                            foreach ($data as $key) {
+                                                echo "<option value='".$key->gru_id."'>".$key->gru_nombre."</option>";
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="col-md-4 col-xs-6">
+                                    <label for="selectCantidad">Seleccione la cantidad de notas a calificar</label>
+                                </div>
+                                <div class="col-md-2 col-xs-6">
+                                    <select name="grupo" id="selectCantidad" class="form-control">
+                                        <option value="">-</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div> 
-                    <div class="well">
-                        <h5 class="subtitle">Estudiantes</h5>
-                        <table id="tableStudents" class="table table-striped table-hover table-responsive">
-                            <thead>
-                                <tr>
-                                    <th>Código</th>
-                                    <th>Id Estudiante</th>
-                                    <th>Estudiante</th>
-                                    <th>&nbsp;</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                
-                            </tbody>
-                        </table>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h5 class="title">Estudiantes</h5>
+                        </div>
+                        <div class="panel-body">
+                            <table id="tableStudents" class="table table-striped table-hover table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th>Código</th>
+                                        <th>Id Estudiante</th>
+                                        <th>Estudiante</th>
+                                        <th>&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div> 
             </div>
