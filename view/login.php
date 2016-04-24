@@ -123,7 +123,7 @@
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <div class="row">
-          <div class="col-md-7 col-md-offset-2">
+          <div class="col-md-12">
             <div class="container_img">
                 <center><img src="images/logo.png" class="img-responsive"> </center> 
             </div>

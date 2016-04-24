@@ -36,6 +36,7 @@ class Sistema{
     switch ($this->verificarParametro('url')){
       case 'cerrar':  
         session_destroy();  // Se destruye la session existente de esta forma no permite el duplicado.
+        $_SESSION['datos_usuario'] = array();
         require "view/login.php";  
         break;
       case 'login':
@@ -176,11 +177,13 @@ class Sistema{
           break;
         default :
           session_destroy();
+          $_SESSION['datos_usuario'] = array();
           require_once  $this->rutas['cerrar'];  
           break;
       }
     }else if($this->verificarParametro('url') =='' && empty($_SESSION["datos_usuario"])){//|| empty($_SESSION["datos_usuario"])
         session_destroy();  // Se destruye la session existente de esta forma no permite el duplicado.
+        $_SESSION['datos_usuario'] = array();
         require_once  $this->rutas['cerrar'];  
     }else{
        require $this->rutas['notfount']; 
